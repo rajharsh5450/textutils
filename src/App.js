@@ -1,15 +1,14 @@
 import "./App.css";
 import React, { useState } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+// import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
 import Alerts from "./components/Alerts";
-import About from "./components/About";
+// import About from "./components/About";
 
 function App() {
   const [mode, setmode] = useState("light");
   const [alert, setalert] = useState(null);
-  const [path, setPath] = useState("home");
 
   const showAlert = (msg, type) => {
     setalert({
@@ -31,14 +30,12 @@ function App() {
   };
   return (
     <>
-      <Router>
+      {/* <Router> */}
         <Navbar
           title="TextUtils"
           aboutText="About"
           mode={mode}
           togglemode={toggleMode}
-          path={path}
-          setPath={setPath}
         />
         <Alerts alert={alert} />
         <div
@@ -47,7 +44,12 @@ function App() {
             color: mode === "light" ? "#6c757d" : "white",
           }}
         >
-          <Switch>
+          <TextForm
+            heading="Enter the text to analyse"
+            mode={mode}
+            showalert={showAlert}
+          />
+          {/* <Switch>
             <Route exact path="/about">
               <About mode={mode}/>
             </Route>
@@ -58,9 +60,9 @@ function App() {
                 showalert={showAlert}
               />
             </Route>
-          </Switch>
+          </Switch> */}
         </div>
-      </Router>
+      {/* </Router> */}
     </>
   );
 }
