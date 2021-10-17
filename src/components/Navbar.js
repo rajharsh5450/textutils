@@ -36,7 +36,7 @@ export default function Navbar(props) {
             </li>
           </ul>
 
-          <div class="form-check form-switch">
+          <div className="form-check form-switch">
             <input
               className="form-check-input"
               type="checkbox"

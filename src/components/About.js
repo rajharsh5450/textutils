@@ -1,6 +1,11 @@
 import React from "react";
 
 export default function About(props) {
+  const myStyle = {
+    backgroundColor: props.mode === "light" ? "white" : "#6c757d",
+    color: props.mode === "light" ? "#6c757d" : "white",
+  };
+
   return (
     <div>
       <h1 className="my-2">About us</h1>
@@ -14,10 +19,7 @@ export default function About(props) {
               data-bs-target="#collapseOne"
               aria-expanded="true"
               aria-controls="collapseOne"
-              style={{
-                backgroundColor: props.mode === "light" ? "white" : "#6c757d",
-                color: props.mode === "light" ? "#6c757d" : "white",
-              }}
+              style={myStyle}
             >
               Accordion Item #1
             </button>

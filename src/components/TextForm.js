@@ -44,13 +44,13 @@ export default function TextForm(props) {
     <>
       <div className="container">
         <h1>{props.heading}</h1>
-        <div class="mb-3">
+        <div className="mb-3">
           <textarea
             className={`form-control  text-${
               props.mode === "light" ? "dark" : "light"
             }`}
             style={{
-              backgroundColor: props.mode === "light" ? "white" : "#6c757d",
+              backgroundColor: props.mode === "light" ? "white" : "#0d4b82",
               color: props.mode === "light" ? "#6c757d" : "white",
             }}
             value={text}
@@ -60,34 +60,63 @@ export default function TextForm(props) {
             rows="8"
           ></textarea>
         </div>
-        <button className="btn btn-primary mx-1" onClick={handleUpclick}>
+        <button
+          className="btn btn-primary mx-1 my-1"
+          disabled={text.length === 0}
+          onClick={handleUpclick}
+        >
           Convert to uppercase
         </button>
-        <button className="btn btn-primary mx-1" onClick={handleLowclick}>
+        <button
+          className="btn btn-primary mx-1 my-1"
+          disabled={text.length === 0}
+          onClick={handleLowclick}
+        >
           Convert to lowercase
         </button>
-        <button className="btn btn-primary mx-1" onClick={handleCapitalised}>
+        <button
+          className="btn btn-primary mx-1 my-1"
+          disabled={text.length === 0}
+          onClick={handleCapitalised}
+        >
           Convert to capitalised case
         </button>
-        <button className="btn btn-primary mx-1" onClick={handleCopy}>
-          Copy Text
+        <button
+          className="btn btn-primary mx-1 my-1"
+          disabled={text.length === 0}
+          onClick={handleCopy}
+        >
+          Copy to clipboard
         </button>
-        <button className="btn btn-danger  mx-1" onClick={handleClear}>
+        <button
+          className="btn btn-danger  mx-1 my-1"
+          disabled={text.length === 0}
+          onClick={handleClear}
+        >
           Clear Text
         </button>
       </div>
       <div className="container my-3">
         <h2>Your Text Summary</h2>
         <p>
-          Words : {text.trim() === "" ? 0 : text.trim().split(" ").length} |
-          Characters : {text.length}
+          Words :{" "}
+          {
+            text.split(" ").filter((ele) => {
+              return ele.length !== 0;
+            }).length
+          }{" "}
+          | Characters : {text.length}
         </p>
         <p>
-          Can be read in {0.008 * (text === "" ? 0 : text.split(" ").length)}{" "}
+          Can be read in{" "}
+          {0.008 *
+            text.split(" ").filter((ele) => {
+              return ele.length !== 0;
+            }).length}{" "}
           minutes.
         </p>
         <h2>Preview</h2>
-        <p>{text}</p>
+        <p>{text.length > 0 ? text : "Nothing to preview"}</p>
       </div>
     </>
   );
