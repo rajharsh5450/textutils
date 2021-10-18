@@ -42,7 +42,7 @@ export default function TextForm(props) {
   //main template
   return (
     <>
-      <div className="container">
+      <div className="container mb-2">
         <h1>{props.heading}</h1>
         <div className="mb-3">
           <textarea
@@ -62,35 +62,35 @@ export default function TextForm(props) {
         </div>
         <button
           className="btn btn-primary mx-1 my-1"
-          disabled={text.length === 0}
+          disabled={text.trim().length === 0}
           onClick={handleUpclick}
         >
           Convert to uppercase
         </button>
         <button
           className="btn btn-primary mx-1 my-1"
-          disabled={text.length === 0}
+          disabled={text.trim().length === 0}
           onClick={handleLowclick}
         >
           Convert to lowercase
         </button>
         <button
           className="btn btn-primary mx-1 my-1"
-          disabled={text.length === 0}
+          disabled={text.trim().length === 0}
           onClick={handleCapitalised}
         >
           Convert to capitalised case
         </button>
         <button
           className="btn btn-primary mx-1 my-1"
-          disabled={text.length === 0}
+          disabled={text.trim().length === 0}
           onClick={handleCopy}
         >
           Copy to clipboard
         </button>
         <button
           className="btn btn-danger  mx-1 my-1"
-          disabled={text.length === 0}
+          disabled={text.trim().length === 0}
           onClick={handleClear}
         >
           Clear Text
@@ -99,13 +99,13 @@ export default function TextForm(props) {
       <div className="container my-3">
         <h2>Your Text Summary</h2>
         <p>
-          Words :{" "}
+          Words :
           {
-            text.split(" ").filter((ele) => {
+            text.split(/\s+/).filter((ele) => {
               return ele.length !== 0;
             }).length
-          }{" "}
-          | Characters : {text.length}
+          }
+          | Characters : {text.trim().length}
         </p>
         <p>
           Can be read in{" "}
@@ -116,7 +116,7 @@ export default function TextForm(props) {
           minutes.
         </p>
         <h2>Preview</h2>
-        <p>{text.length > 0 ? text : "Nothing to preview"}</p>
+        <p>{text.trim().length > 0 ? text : "Nothing to preview"}</p>
       </div>
     </>
   );
